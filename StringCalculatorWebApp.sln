@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28705.295
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringCalculator.Api", "StringCalculator.Api\StringCalculator.Api.csproj", "{1B489D66-95B5-4C57-ADC2-887B11A912EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringCalculator.Api", "StringCalculator.Api\StringCalculator.Api.csproj", "{1B489D66-95B5-4C57-ADC2-887B11A912EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringCalculator.Core", "StringCalculator.Core\StringCalculator.Core.csproj", "{3585D179-982A-4781-8DCB-8134A7A2FBB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringCalculator.Core", "StringCalculator.Core\StringCalculator.Core.csproj", "{3585D179-982A-4781-8DCB-8134A7A2FBB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringCalculator.Tests.Unit", "StringCalculator.Tests.Unit\StringCalculator.Tests.Unit.csproj", "{895FDB94-E091-4096-A3AA-28BE711919F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringCalculator.Tests.Unit", "StringCalculator.Tests.Unit\StringCalculator.Tests.Unit.csproj", "{895FDB94-E091-4096-A3AA-28BE711919F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
