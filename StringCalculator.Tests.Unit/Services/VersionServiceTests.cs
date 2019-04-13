@@ -1,10 +1,6 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StringCalculator.Core;
 using StringCalculator.Core.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace StringCalculator.Tests.Unit.Services

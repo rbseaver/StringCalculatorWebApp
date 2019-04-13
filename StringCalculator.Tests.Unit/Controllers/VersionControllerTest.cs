@@ -3,9 +3,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using StringCalculator.Api.Controllers;
 using StringCalculator.Core.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace StringCalculator.Tests.Unit.Controllers
