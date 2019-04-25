@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 
 namespace StringCalculator.Core.Services
 {
@@ -8,10 +9,19 @@ namespace StringCalculator.Core.Services
         {
             if (string.IsNullOrEmpty(input))
             {
-                return 0;
+                return await Task.FromResult(0);
             }
 
-            return await Task.FromResult(int.Parse(input));
+            if (input.Length == 1)
+            {
+                return await Task.FromResult(int.Parse(input));
+            }
+
+            var nums = input.Split(',');
+
+            var sum = nums.Sum(x => int.Parse(x));
+
+            return await Task.FromResult(sum);
         }
     }
 }
