@@ -21,5 +21,19 @@ namespace StringCalculator.Tests.Unit.Controllers
 
             response.Result.Should().Be(0);
         }
+
+        [TestMethod]
+        public void ShouldReturnTheNumberPassedIn()
+        {
+            const string input = "1";
+            const int expected = 1;
+            var calculatorService = new Mock<ICalculatorService>();
+            calculatorService.Setup(x => x.Add(input)).Returns(Task.FromResult(expected));
+            var controller = new CalculatorController(calculatorService.Object);
+
+            var response = controller.Post(input);
+
+            response.Result.Should().Be(expected);
+        }
     }
 }

@@ -1,5 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace StringCalculator.Tests.Integration.Controllers
@@ -10,17 +13,34 @@ namespace StringCalculator.Tests.Integration.Controllers
         [TestMethod]
         public async Task ItShouldReturnZeroForEmptyString()
         {
-            var client = TestClient.CreateClient();
+            using (var client = TestClient.CreateClient())
+            {
+                var content = new StringContent(JsonConvert.SerializeObject(string.Empty), Encoding.UTF8, "application/json");
 
-            var content = new StringContent(string.Empty);
+                using (var response = await client.PostAsync("/api/calculator", content))
+                {
+                    response.EnsureSuccessStatusCode();
+                    var result = await response.Content.ReadAsAsync<int>();
+                    result.Should().Be(0);
+                }
+            }
+        }
 
-            var response = await client.PostAsync("/api/calculator", content);
+        [TestMethod]
+        public async Task ItShouldReturnTheNumberPassedIn()
+        {
+            using (var client = TestClient.CreateClient())
+            {
+                var content = new StringContent("1", Encoding.UTF8, "application/json");
 
-            response.EnsureSuccessStatusCode();
+                using (var response = await client.PostAsync("/api/calculator", content))
+                {
+                    response.EnsureSuccessStatusCode();
+                    var result = await response.Content.ReadAsAsync<int>();
+                    result.Should().Be(1);
+                }
+            }
 
-            var result = await response.Content.ReadAsAsync<int>();
-
-            Assert.AreEqual(0, result);
         }
     }
 }

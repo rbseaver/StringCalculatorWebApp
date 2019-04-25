@@ -6,7 +6,12 @@ namespace StringCalculator.Core.Services
     {
         public async Task<int> Add(string input)
         {
-            return await Task.FromResult(0);
+            if (string.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
+
+            return await Task.FromResult(int.Parse(input));
         }
     }
 }

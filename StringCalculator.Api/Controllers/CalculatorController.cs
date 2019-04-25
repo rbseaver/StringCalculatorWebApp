@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using StringCalculator.Core.Services;
+using System.Threading.Tasks;
 
 namespace StringCalculator.Api.Controllers
 {
@@ -16,7 +16,7 @@ namespace StringCalculator.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<int> Post(string value)
+        public async Task<int> Post([FromBody] string value)
         {
             return await calculatorService.Add(value);
         }

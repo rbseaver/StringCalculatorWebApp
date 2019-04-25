@@ -17,5 +17,15 @@ namespace StringCalculator.Tests.Unit.Services
 
             result.Should().Be(0);
         }
+
+        [TestMethod]
+        public async Task ItShouldReturnTheNumberPassedIn()
+        {
+            var service = new CalculatorService();
+
+            int result = await service.Add("1");
+
+            result.Should().Be(1);
+        }
     }
 }
