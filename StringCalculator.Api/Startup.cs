@@ -20,6 +20,7 @@ namespace StringCalculator.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddScoped<IAssemblyProvider, AssemblyProvider>();
             services.AddScoped<IVersionService, VersionService>();
             services.AddScoped<ICalculatorService, CalculatorService>();
         }

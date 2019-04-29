@@ -1,5 +1,7 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using StringCalculator.Api;
 using StringCalculator.Core.Services;
 using System.Threading.Tasks;
 
@@ -11,11 +13,15 @@ namespace StringCalculator.Tests.Unit.Services
         [TestMethod]
         public async Task ShouldReturnVersion()
         {
-            var service = new VersionService();
+            var assemblyProvider = new Mock<IAssemblyProvider>();
+            assemblyProvider.Setup(x => x.GetAssemblyVersion<Startup>())
+                .Returns(typeof(Startup).Assembly.GetName().Version.ToString());
 
-            var version = await service.GetVersion();
+            var service = new VersionService(assemblyProvider.Object);
 
-            version.Should().Be("1.0.0.0");
+            var version = await service.GetVersionAsync<Startup>();
+
+            version.Should().Be(typeof(Startup).Assembly.GetName().Version.ToString());
         }
     }
 }

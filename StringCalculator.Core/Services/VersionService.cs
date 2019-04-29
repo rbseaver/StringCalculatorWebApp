@@ -1,16 +1,18 @@
-﻿using System.Reflection;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace StringCalculator.Core.Services
 {
     public class VersionService : IVersionService
     {
-        public Task<string> GetVersion()
+        private readonly IAssemblyProvider assemblyProvider;
+
+        public VersionService(IAssemblyProvider assemblyProvider)
         {
-            var version = Assembly
-                .GetExecutingAssembly()
-                .GetName()
-                .Version.ToString();
+            this.assemblyProvider = assemblyProvider;
+        }
+        public Task<string> GetVersionAsync<T>()
+        {
+            var version = assemblyProvider.GetAssemblyVersion<T>();
 
             return Task.FromResult(version);
         }

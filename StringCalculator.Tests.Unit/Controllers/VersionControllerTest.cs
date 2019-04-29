@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using StringCalculator.Api;
 using StringCalculator.Api.Controllers;
 using StringCalculator.Core.Services;
 using System.Threading.Tasks;
@@ -14,12 +15,14 @@ namespace StringCalculator.Tests.Unit.Controllers
         public void ShouldReturnVersion()
         {
             var mockVersionService = new Mock<IVersionService>();
-            mockVersionService.Setup(x => x.GetVersion()).Returns(Task.FromResult("1.0.0.0"));
+            var expectedVersion = typeof(Startup).Assembly.GetName().Version.ToString();
+            mockVersionService.Setup(x => x.GetVersionAsync<Startup>())
+                .Returns(Task.FromResult(expectedVersion));
             var controller = new VersionController(mockVersionService.Object);
 
             var version = controller.Get().Result;
 
-            version.Should().Be("1.0.0.0");
+            version.Should().Be(expectedVersion);
         }
     }
 }

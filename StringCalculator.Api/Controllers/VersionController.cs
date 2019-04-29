@@ -19,7 +19,7 @@ namespace StringCalculator.Api.Controllers
         [HttpGet]
         public Task<string> Get()
         {
-            return versionService.GetVersion();
+            return versionService.GetVersionAsync<Startup>();
         }
     }
 }

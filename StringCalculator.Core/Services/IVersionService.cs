@@ -4,6 +4,6 @@ namespace StringCalculator.Core.Services
 {
     public interface IVersionService
     {
-        Task<string> GetVersion();
+        Task<string> GetVersionAsync<T>();
     }
 }

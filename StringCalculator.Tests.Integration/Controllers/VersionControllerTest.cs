@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using StringCalculator.Api;
 using System.Threading.Tasks;
 
 namespace StringCalculator.Tests.Integration.Controllers
@@ -15,7 +16,7 @@ namespace StringCalculator.Tests.Integration.Controllers
             {
                 response.EnsureSuccessStatusCode();
                 var version = await response.Content.ReadAsStringAsync();
-                Assert.AreEqual("1.0.0.0", version);
+                Assert.AreEqual(typeof(Startup).Assembly.GetName().Version.ToString(), version);
             }
         }
     }
