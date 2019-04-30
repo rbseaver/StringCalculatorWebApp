@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using StringCalculator.Core.Interfaces;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace StringCalculator.Core.Services
@@ -17,7 +18,7 @@ namespace StringCalculator.Core.Services
                 return await Task.FromResult(int.Parse(input));
             }
 
-            var nums = input.Split(',');
+            var nums = input.Split(',', '\n');
 
             var sum = nums.Sum(x => int.Parse(x));
 

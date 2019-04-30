@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using StringCalculator.Core.Services;
+using StringCalculator.Core.Interfaces;
 
 namespace StringCalculator.Api.Controllers
 {

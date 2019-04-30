@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using StringCalculator.Core.Services;
+using StringCalculator.Core.Interfaces;
+using StringCalculator.Core.Models;
 using System.Threading.Tasks;
 
 namespace StringCalculator.Api.Controllers
@@ -16,9 +17,9 @@ namespace StringCalculator.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<int> Post([FromBody] string value)
+        public async Task<int> Post([FromBody] SumRequest numberList)
         {
-            return await calculatorService.Add(value);
+            return await calculatorService.Add(numberList.Numbers);
         }
     }
 }

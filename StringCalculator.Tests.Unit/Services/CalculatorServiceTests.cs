@@ -11,7 +11,7 @@ namespace StringCalculator.Tests.Unit.Services
         [TestMethod]
         public async Task ItShouldReturnZeroForEmptyString()
         {
-            var service = new CalculatorService();
+            var service = InitializeCalculator();
 
             var result = await service.Add(string.Empty);
 
@@ -21,7 +21,7 @@ namespace StringCalculator.Tests.Unit.Services
         [TestMethod]
         public async Task ItShouldReturnTheNumberPassedIn()
         {
-            var service = new CalculatorService();
+            var service = InitializeCalculator();
 
             var result = await service.Add("1");
 
@@ -36,11 +36,28 @@ namespace StringCalculator.Tests.Unit.Services
         [DataRow("3,6,9,12,15,18", 63)]
         public async Task ItShouldReturnSumOfNumbers(string input, int expected)
         {
-            var service = new CalculatorService();
+            var service = InitializeCalculator();
 
             var result = await service.Add(input);
 
             result.Should().Be(expected);
+        }
+
+        [TestMethod]
+        [DataRow("1\n1", 2)]
+        [DataRow("1\n1,1", 3)]
+        public async Task ItShouldAcceptNewlineDelimiter(string input, int expected)
+        {
+            var service = InitializeCalculator();
+
+            var result = await service.Add(input);
+
+            result.Should().Be(expected);
+        }
+
+        private static CalculatorService InitializeCalculator()
+        {
+            return new CalculatorService();
         }
     }
 }

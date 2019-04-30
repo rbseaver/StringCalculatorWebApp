@@ -1,4 +1,4 @@
-﻿namespace StringCalculator.Core.Services
+﻿namespace StringCalculator.Core.Interfaces
 {
     public interface IAssemblyProvider
     {

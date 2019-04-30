@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using StringCalculator.Api;
+using StringCalculator.Core.Interfaces;
 using StringCalculator.Core.Services;
 using System.Threading.Tasks;
 

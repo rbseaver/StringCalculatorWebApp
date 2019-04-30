@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using StringCalculator.Core.Interfaces;
+using System.Threading.Tasks;
 
 namespace StringCalculator.Core.Services
 {

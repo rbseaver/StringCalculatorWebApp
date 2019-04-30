@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace StringCalculator.Core.Services
+namespace StringCalculator.Core.Interfaces
 {
     public interface ICalculatorService
     {
