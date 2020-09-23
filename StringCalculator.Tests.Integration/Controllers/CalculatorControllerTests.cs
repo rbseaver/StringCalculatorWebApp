@@ -22,7 +22,7 @@ namespace StringCalculator.Tests.Integration.Controllers
                 using (var response = await client.PostAsync("/api/calculator", content))
                 {
                     response.EnsureSuccessStatusCode();
-                    var result = await response.Content.ReadAsAsync<int>();
+                    var result = await response.Content.ReadAsStreamAsync();
                     result.Should().Be(0);
                 }
             }
@@ -39,7 +39,7 @@ namespace StringCalculator.Tests.Integration.Controllers
                 using (var response = await client.PostAsync("/api/calculator", content))
                 {
                     response.EnsureSuccessStatusCode();
-                    var result = await response.Content.ReadAsAsync<int>();
+                    var result = await response.Content.ReadAsStreamAsync();
                     result.Should().Be(1);
                 }
             }
@@ -63,7 +63,7 @@ namespace StringCalculator.Tests.Integration.Controllers
                 using (var response = await client.PostAsync("/api/calculator", content))
                 {
                     response.EnsureSuccessStatusCode();
-                    var result = await response.Content.ReadAsAsync<int>();
+                    var result = await response.Content.ReadAsStreamAsync();
                     result.Should().Be(expected);
                 }
             }
